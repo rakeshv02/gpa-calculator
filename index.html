@@ -1,110 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ROI Calculator — Return on Investment | Tabutility</title>
-  <meta name="description" content="Calculate return on investment (ROI), annualised return, and profit/loss for any investment. Simple and detailed ROI analysis." />
-  <meta name="keywords" content="roi calculator, return on investment, investment return, annualised return, profit calculator" />
-  <link rel="canonical" href="https://roi.tabutility.com/" />
-  <meta property="og:title" content="ROI Calculator — Return on Investment" />
-  <meta property="og:description" content="Calculate ROI, annualised return and profit for any investment instantly." />
-  <meta property="og:type" content="website" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
-  <meta name="robots" content="index, follow" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7039091592734005" crossorigin="anonymous"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-78VZWJ5B1W"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-78VZWJ5B1W');</script>
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GPA Calculator — Tabutility</title>
+<meta name="description" content="Free GPA calculator. Add your courses, grades and credits to calculate your GPA instantly. Supports 4.0 and percentage scales."/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78VZWJ5B1W"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-78VZWJ5B1W');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7039091592734005" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f172a;color:#f1f5f9;min-height:100vh}
+nav{background:#1e293b;border-bottom:1px solid #334155;padding:14px 24px;display:flex;align-items:center;gap:16px}
+nav a{color:#94a3b8;text-decoration:none;font-size:14px}nav a:hover{color:#f1f5f9}
+nav .brand{color:#38bdf8;font-weight:700;font-size:18px}
+.ad-banner{background:#1e293b;border-bottom:1px solid #334155;padding:8px;text-align:center}
+#app{max-width:620px;margin:36px auto;padding:0 20px 40px}
+h1{font-size:26px;font-weight:700;text-align:center;margin-bottom:6px}
+.subtitle{text-align:center;color:#94a3b8;margin-bottom:24px;font-size:14px}
+.result-bar{background:#1e293b;border-radius:16px;padding:20px 24px;border:1px solid #334155;margin-bottom:16px;display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.gpa-big{font-family:monospace;font-size:64px;font-weight:800;color:#38bdf8;line-height:1}
+.gpa-meta{display:flex;flex-direction:column;gap:6px}
+.gpa-letter{font-size:22px;font-weight:700}
+.gpa-sub{font-size:13px;color:#64748b}
+.card{background:#1e293b;border-radius:16px;padding:20px;border:1px solid #334155;margin-bottom:14px}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.card-header h2{font-size:15px;font-weight:600}
+.add-btn{background:#38bdf8;color:#0f172a;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+.course-row{display:grid;grid-template-columns:1fr 110px 80px 32px;gap:8px;margin-bottom:8px;align-items:center}
+.course-row input,.course-row select{background:#0f172a;color:#f1f5f9;border:1px solid #334155;border-radius:8px;padding:8px;font-size:14px;width:100%}
+.rm-btn{background:none;border:none;color:#475569;cursor:pointer;font-size:18px;padding:0;line-height:1}
+.rm-btn:hover{color:#ef4444}
+.col-headers{display:grid;grid-template-columns:1fr 110px 80px 32px;gap:8px;margin-bottom:6px}
+.col-hdr{font-size:12px;color:#475569;font-weight:600}
+.progress-wrap{height:8px;background:#334155;border-radius:4px;margin-top:8px;overflow:hidden}
+.progress-bar{height:100%;border-radius:4px;transition:width .4s,background .4s}
+.ref-card{background:#1e293b;border-radius:16px;border:1px solid #334155;overflow:hidden}
+.ref-header{display:flex;padding:11px 16px;border-bottom:1px solid #334155;font-size:12px;color:#64748b;font-weight:600}
+.ref-row{display:flex;padding:9px 16px;border-bottom:1px solid #0f172a;font-size:13px}
+.ref-row:nth-child(even){background:#1a2535}
+.ref-col{flex:1}
+</style>
 </head>
-<body style="margin:0;background:#f8faff;font-family:'Segoe UI',Arial,sans-serif">
-<div id="root"></div>
-<script type="text/babel">
-//<![CDATA[
-const { useState } = React;
-function fmt(n){return '$'+Math.abs(Math.round(n)).toLocaleString();}
-function fmtPct(n){return (n>=0?'+':'')+n.toFixed(2)+'%';}
+<body>
+<nav><span class="brand">⚡ Tabutility</span><a href="https://tabutility.com">← All Tools</a></nav>
+<div class="ad-banner"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7039091592734005" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+<div id="app">
+  <h1>GPA Calculator</h1>
+  <p class="subtitle">Add courses, grades and credits — your GPA updates instantly</p>
 
-function App() {
-  const [initial, setInitial] = useState(10000);
-  const [final, setFinal] = useState(14500);
-  const [years, setYears] = useState(3);
-  const [fees, setFees] = useState(0);
-
-  const inv = Number(initial)||0;
-  const fin = Number(final)||0;
-  const yrs = Number(years)||1;
-  const fee = Number(fees)||0;
-
-  const netFinal = fin - fee;
-  const profit = netFinal - inv;
-  const roi = inv > 0 ? (profit / inv * 100) : 0;
-  const annualised = inv > 0 && yrs > 0 ? (Math.pow(netFinal/inv, 1/yrs)-1)*100 : 0;
-  const positive = profit >= 0;
-
-  return (
-    <div style={{maxWidth:520,margin:'0 auto',paddingBottom:40}}>
-      <div style={{background:'#1a1a2e',padding:'12px 20px',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-        <a href="https://tabutility.com" style={{color:'#a5b4fc',textDecoration:'none',fontSize:14}}>← All Tools</a>
-        <span style={{color:'#fff',fontWeight:700,fontSize:15}}>⚡ Tabutility</span>
-      </div>
-      <div style={{background:'linear-gradient(135deg,#0891b2,#0e7490)',padding:'28px 20px',textAlign:'center',color:'#fff'}}>
-        <div style={{fontSize:36,marginBottom:8}}>📈</div>
-        <h1 style={{margin:'0 0 6px',fontSize:22,fontWeight:900}}>ROI Calculator</h1>
-        <p style={{margin:0,fontSize:13,opacity:0.85}}>Return on investment · annualised return · profit/loss</p>
-      </div>
-      <div style={{padding:20}}>
-        <div style={{background:'#fff',borderRadius:14,padding:20,boxShadow:'0 2px 12px rgba(0,0,0,0.06)',marginBottom:16}}>
-          {[['Initial Investment','$',initial,setInitial],['Final Value','$',final,setFinal],['Fees / Costs','$',fees,setFees]].map(([label,prefix,val,setter])=>(
-            <div key={label} style={{marginBottom:14}}>
-              <label style={{fontSize:13,fontWeight:600,color:'#374151',display:'block',marginBottom:6}}>{label}</label>
-              <div style={{position:'relative'}}>
-                <span style={{position:'absolute',left:12,top:'50%',transform:'translateY(-50%)',color:'#6b7280'}}>{prefix}</span>
-                <input type="number" value={val} onChange={e=>setter(e.target.value)}
-                  style={{width:'100%',padding:'11px 12px 11px 28px',borderRadius:10,border:'2px solid #e5e7eb',fontSize:16,boxSizing:'border-box'}} />
-              </div>
-            </div>
-          ))}
-          <div>
-            <label style={{fontSize:13,fontWeight:600,color:'#374151',display:'block',marginBottom:6}}>Investment Period (years)</label>
-            <input type="number" value={years} onChange={e=>setYears(e.target.value)} min={0.1} step={0.5}
-              style={{width:'100%',padding:'11px 12px',borderRadius:10,border:'2px solid #e5e7eb',fontSize:16,boxSizing:'border-box'}} />
-          </div>
-        </div>
-
-        <div style={{background: positive?'#f0fdf4':'#fef2f2',borderRadius:14,padding:24,textAlign:'center',marginBottom:16,boxShadow:'0 2px 12px rgba(0,0,0,0.06)'}}>
-          <div style={{fontSize:13,fontWeight:600,color:'#6b7280',marginBottom:4}}>TOTAL ROI</div>
-          <div style={{fontSize:52,fontWeight:900,color: positive?'#059669':'#dc2626'}}>{fmtPct(roi)}</div>
-          <div style={{fontSize:15,color: positive?'#059669':'#dc2626',fontWeight:700}}>{positive?'+':''}{fmt(profit)} {positive?'profit':'loss'}</div>
-        </div>
-
-        <div style={{background:'#fff',borderRadius:14,padding:20,boxShadow:'0 2px 12px rgba(0,0,0,0.06)'}}>
-          {[
-            ['Initial Investment', fmt(inv)],
-            ['Final Value (before fees)', fmt(fin)],
-            ['Fees / Transaction Costs', fee > 0 ? '-'+fmt(fee) : '$0'],
-            ['Net Final Value', fmt(netFinal)],
-            ['Net Profit / Loss', (positive?'+':'-')+fmt(profit)],
-            ['Total ROI', fmtPct(roi)],
-            ['Annualised Return (CAGR)', fmtPct(annualised)+' / yr'],
-          ].map(([l,v])=>(
-            <div key={l} style={{display:'flex',justifyContent:'space-between',padding:'9px 0',borderBottom:'1px solid #f0f0f0',fontSize:14}}>
-              <span style={{color:'#6b7280'}}>{l}</span>
-              <strong style={{color: l.includes('Loss')||l.includes('Fees')&&fee>0?'#dc2626':l.includes('ROI')||l.includes('Profit')||l.includes('CAGR')?positive?'#059669':'#dc2626':'#1a1a2e'}}>{v}</strong>
-            </div>
-          ))}
-        </div>
-        <div style={{background:'#ecfeff',borderRadius:12,padding:16,marginTop:16,fontSize:13,color:'#0e7490',lineHeight:1.6}}>
-          <strong>CAGR</strong> (Compound Annual Growth Rate) is the annualised ROI — useful when comparing investments held for different time periods.
-        </div>
-      </div>
+  <div class="result-bar" id="result-bar">
+    <div class="gpa-big" id="gpa-val">—</div>
+    <div class="gpa-meta">
+      <div class="gpa-letter" id="gpa-letter" style="color:#38bdf8"></div>
+      <div class="gpa-sub" id="gpa-sub">Add courses below</div>
     </div>
-  );
+    <div style="flex:1;min-width:160px">
+      <div class="progress-wrap"><div class="progress-bar" id="prog" style="width:0%;background:#38bdf8"></div></div>
+      <div style="font-size:12px;color:#475569;margin-top:4px">out of 4.0</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Courses</h2>
+      <button class="add-btn" onclick="addRow()">+ Add Course</button>
+    </div>
+    <div class="col-headers">
+      <div class="col-hdr">Course Name</div>
+      <div class="col-hdr">Grade</div>
+      <div class="col-hdr">Credits</div>
+      <div class="col-hdr"></div>
+    </div>
+    <div id="rows"></div>
+  </div>
+
+  <div class="ref-card">
+    <div class="ref-header"><span class="ref-col">Letter</span><span class="ref-col">Percentage</span><span class="ref-col">GPA Points</span></div>
+    <div id="ref-body"></div>
+  </div>
+</div>
+<script>
+var SCALE = [
+  ['A+','97–100',4.0],['A','93–96',4.0],['A−','90–92',3.7],
+  ['B+','87–89',3.3],['B','83–86',3.0],['B−','80–82',2.7],
+  ['C+','77–79',2.3],['C','73–76',2.0],['C−','70–72',1.7],
+  ['D+','67–69',1.3],['D','63–66',1.0],['D−','60–62',0.7],['F','0–59',0.0]
+];
+
+var refBody = document.getElementById('ref-body');
+SCALE.forEach(function(s){
+  var row=document.createElement('div'); row.className='ref-row';
+  row.innerHTML='<span class="ref-col" style="font-weight:700">'+s[0]+'</span><span class="ref-col">'+s[1]+'%</span><span class="ref-col">'+s[2].toFixed(1)+'</span>';
+  refBody.appendChild(row);
+});
+
+var courses = [];
+var nextId = 1;
+
+function addRow(name, grade, credits){
+  var id = nextId++;
+  courses.push({ id:id, name:name||'', grade:grade||'A', credits:credits||3 });
+  renderRows();
 }
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-//]]>
+
+function removeRow(id){
+  courses = courses.filter(function(c){ return c.id!==id; });
+  renderRows();
+}
+
+function renderRows(){
+  var container = document.getElementById('rows');
+  container.innerHTML='';
+  courses.forEach(function(c){
+    var row=document.createElement('div'); row.className='course-row';
+    // Name input
+    var ni=document.createElement('input'); ni.type='text'; ni.value=c.name; ni.placeholder='e.g. Math 101';
+    ni.oninput=(function(id){ return function(e){ updateField(id,'name',e.target.value); }; })(c.id);
+    // Grade select
+    var gs=document.createElement('select');
+    SCALE.forEach(function(s){
+      var o=document.createElement('option'); o.value=s[2]; o.textContent=s[0];
+      if(s[2]===c.grade) o.selected=true;
+      gs.appendChild(o);
+    });
+    gs.value=c.grade;
+    gs.onchange=(function(id){ return function(e){ updateField(id,'grade',parseFloat(e.target.value)); }; })(c.id);
+    // Credits
+    var cr=document.createElement('input'); cr.type='number'; cr.min='0.5'; cr.max='6'; cr.step='0.5'; cr.value=c.credits;
+    cr.oninput=(function(id){ return function(e){ updateField(id,'credits',parseFloat(e.target.value)||0); }; })(c.id);
+    // Remove
+    var rm=document.createElement('button'); rm.className='rm-btn'; rm.textContent='✕';
+    rm.onclick=(function(id){ return function(){ removeRow(id); }; })(c.id);
+    row.appendChild(ni); row.appendChild(gs); row.appendChild(cr); row.appendChild(rm);
+    container.appendChild(row);
+  });
+  calcGpa();
+}
+
+function updateField(id,field,val){
+  courses=courses.map(function(c){ return c.id===id?Object.assign({},c,((function(o,k,v){o[k]=v;return o;})({},field,val))):c; });
+  calcGpa();
+}
+
+function calcGpa(){
+  var totalPoints=0, totalCredits=0;
+  courses.forEach(function(c){ totalPoints+=c.grade*c.credits; totalCredits+=c.credits; });
+  var gpaEl=document.getElementById('gpa-val');
+  var letEl=document.getElementById('gpa-letter');
+  var subEl=document.getElementById('gpa-sub');
+  var prog=document.getElementById('prog');
+  if(!totalCredits||!courses.length){ gpaEl.textContent='—'; letEl.textContent=''; subEl.textContent='Add courses below'; prog.style.width='0%'; return; }
+  var gpa=totalPoints/totalCredits;
+  gpaEl.textContent=gpa.toFixed(2);
+  var letter=SCALE.find(function(s){ return gpa>=s[2]; });
+  var lbl=letter?letter[0]:'F';
+  letEl.textContent=lbl;
+  var color = gpa>=3.7?'#22c55e':gpa>=3.0?'#38bdf8':gpa>=2.0?'#f59e0b':'#ef4444';
+  gpaEl.style.color=color; letEl.style.color=color;
+  prog.style.width=(gpa/4*100)+'%'; prog.style.background=color;
+  subEl.textContent=totalCredits+' credit'+(totalCredits!==1?'s':'')+' · '+courses.length+' course'+(courses.length!==1?'s':'');
+}
+
+// Start with 4 default courses
+addRow('Course 1','',3);
+addRow('Course 2','',3);
+addRow('Course 3','',3);
+addRow('Course 4','',3);
 </script>
 </body>
 </html>
