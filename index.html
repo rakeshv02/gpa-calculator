@@ -7,41 +7,40 @@
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
 <title>GPA Calculator — Tabutility</title>
 <meta name="description" content="Free GPA calculator. Add your courses, grades and credits to calculate your GPA instantly. Supports 4.0 and percentage scales."/>
 <script>window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-78VZWJ5B1W';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-78VZWJ5B1W');});</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7039091592734005" crossorigin="anonymous"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f7f4;color:#0f172a;min-height:100vh}
-nav{background:#ffffff;border-bottom:1px solid #e2e8f0;padding:14px 24px;display:flex;align-items:center;gap:16px}
-nav a{color:#64748b;text-decoration:none;font-size:14px}nav a:hover{color:#0f172a}
-nav .brand{color:#0f172a;font-weight:700;font-size:18px}
-.ad-banner{background:#ffffff;border-bottom:1px solid #e2e8f0;padding:4px;text-align:center}
+body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#0f172a;color:#f1f5f9;min-height:100vh}
+nav{background:#1e293b;border-bottom:1px solid #334155;padding:14px 24px;display:flex;align-items:center;gap:16px}
+nav a{color:#94a3b8;text-decoration:none;font-size:14px}nav a:hover{color:#f1f5f9}
+nav .brand{color:#4f46e5;font-weight:700;font-size:18px}
+.ad-banner{background:#1e293b;border-bottom:1px solid #334155;padding:4px;text-align:center}
 #app{max-width:620px;margin:8px auto;padding:0 20px 40px}
 h1{font-size:26px;font-weight:700;text-align:center;margin-bottom:6px}
-.subtitle{text-align:center;color:#64748b;margin-bottom:24px;font-size:14px}
-.result-bar{background:#ffffff;border-radius:16px;padding:20px 24px;border:1px solid #e2e8f0;margin-bottom:16px;display:flex;gap:32px;align-items:center;flex-wrap:wrap}
-.gpa-big{font-family:'Inter',monospace;font-size:64px;font-weight:800;color:#0f172a;line-height:1}
+.subtitle{text-align:center;color:#94a3b8;margin-bottom:24px;font-size:14px}
+.result-bar{background:#1e293b;border-radius:16px;padding:20px 24px;border:1px solid #334155;margin-bottom:16px;display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.gpa-big{font-family:monospace;font-size:64px;font-weight:800;color:#4f46e5;line-height:1}
 .gpa-meta{display:flex;flex-direction:column;gap:6px}
 .gpa-letter{font-size:22px;font-weight:700}
 .gpa-sub{font-size:13px;color:#64748b}
-.card{background:#ffffff;border-radius:16px;padding:20px;border:1px solid #e2e8f0;margin-bottom:14px}
+.card{background:#1e293b;border-radius:16px;padding:20px;border:1px solid #334155;margin-bottom:14px}
 .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 .card-header h2{font-size:15px;font-weight:600}
-.add-btn{background:#0f172a;color:#f8f7f4;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
+.add-btn{background:#4f46e5;color:#0f172a;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer}
 .course-row{display:grid;grid-template-columns:1fr 110px 80px 32px;gap:8px;margin-bottom:8px;align-items:center}
-.course-row input,.course-row select{background:#f8f7f4;color:#0f172a;border:1px solid #e2e8f0;border-radius:8px;padding:8px;font-size:14px;width:100%}
+.course-row input,.course-row select{background:#0f172a;color:#f1f5f9;border:1px solid #334155;border-radius:8px;padding:8px;font-size:14px;width:100%}
 .rm-btn{background:none;border:none;color:#475569;cursor:pointer;font-size:18px;padding:0;line-height:1}
 .rm-btn:hover{color:#ef4444}
 .col-headers{display:grid;grid-template-columns:1fr 110px 80px 32px;gap:8px;margin-bottom:6px}
 .col-hdr{font-size:12px;color:#475569;font-weight:600}
-.progress-wrap{height:8px;background:#e2e8f0;border-radius:4px;margin-top:8px;overflow:hidden}
+.progress-wrap{height:8px;background:#334155;border-radius:4px;margin-top:8px;overflow:hidden}
 .progress-bar{height:100%;border-radius:4px;transition:width .4s,background .4s}
-.ref-card{background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden}
-.ref-header{display:flex;padding:11px 16px;border-bottom:1px solid #e2e8f0;font-size:12px;color:#64748b;font-weight:600}
-.ref-row{display:flex;padding:9px 16px;border-bottom:1px solid #f8f7f4;font-size:13px}
+.ref-card{background:#1e293b;border-radius:16px;border:1px solid #334155;overflow:hidden}
+.ref-header{display:flex;padding:11px 16px;border-bottom:1px solid #334155;font-size:12px;color:#64748b;font-weight:600}
+.ref-row{display:flex;padding:9px 16px;border-bottom:1px solid #0f172a;font-size:13px}
 .ref-row:nth-child(even){background:#1a2535}
 .ref-col{flex:1}
 </style>
@@ -59,13 +58,14 @@ h1{font-size:26px;font-weight:700;text-align:center;margin-bottom:6px}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tabutility","item":"https://tabutility.com"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://tabutility.com/#calculators"},{"@type":"ListItem","position":3,"name":"GPA Calculator","item":"https://gpa-calculator.tabutility.com/"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the GPA Calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes — completely free, no sign-up or download needed. Just enter your numbers and get instant results."}},{"@type":"Question","name":"How accurate is the GPA Calculator?","acceptedAnswer":{"@type":"Answer","text":"Results are based on standard financial formulas and are accurate for planning purposes. For personalised financial advice, consult a qualified professional."}},{"@type":"Question","name":"Can I use the GPA Calculator on my phone?","acceptedAnswer":{"@type":"Answer","text":"Yes — it works on any device including desktop, tablet and mobile."}},{"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"No account needed. The GPA Calculator works instantly in your browser."}}]}</script>
   <meta name="theme-color" content="#1a1a2e" />
-  <style id="tabutility-brand">
-/* empty ad slots: reserve space, no bordered box */
-.ad-banner,.ad-slot,.ad-container{background:transparent!important;border:none!important;border-bottom:none!important;box-shadow:none!important}
+  <style id="tabutility-brand-v2">
+/* Canonical dark-surface spec (STYLE.md): indigo accent, white text on indigo */
+.btn,.toggle-btn.active,button.active{color:#fff!important}
+nav .brand{color:#fff}
+nav a:hover{color:#818cf8}
+input:focus,select:focus,textarea:focus{border-color:#818cf8!important}
 /* AdSense not yet approved: hide all ad frames (container min-height still reserves space). Remove these two lines after approval. */
 ins.adsbygoogle,.ad-banner iframe,.ad-slot iframe,.ad-container iframe{visibility:hidden!important}
-nav .brand{color:#0f172a}
-body{-webkit-font-smoothing:antialiased}
 </style>
 </head>
 <body>
@@ -78,11 +78,11 @@ body{-webkit-font-smoothing:antialiased}
   <div class="result-bar" id="result-bar">
     <div class="gpa-big" id="gpa-val">—</div>
     <div class="gpa-meta">
-      <div class="gpa-letter" id="gpa-letter" style="color:#0f172a"></div>
+      <div class="gpa-letter" id="gpa-letter" style="color:#4f46e5"></div>
       <div class="gpa-sub" id="gpa-sub">Add courses below</div>
     </div>
     <div style="flex:1;min-width:160px">
-      <div class="progress-wrap"><div class="progress-bar" id="prog" style="width:0%;background:#0f172a"></div></div>
+      <div class="progress-wrap"><div class="progress-bar" id="prog" style="width:0%;background:#4f46e5"></div></div>
       <div style="font-size:12px;color:#475569;margin-top:4px">out of 4.0</div>
     </div>
   </div>
@@ -182,7 +182,7 @@ function calcGpa(){
   var letter=SCALE.find(function(s){ return gpa>=s[2]; });
   var lbl=letter?letter[0]:'F';
   letEl.textContent=lbl;
-  var color = gpa>=3.7?'#22c55e':gpa>=3.0?'#0f172a':gpa>=2.0?'#f59e0b':'#ef4444';
+  var color = gpa>=3.7?'#22c55e':gpa>=3.0?'#4f46e5':gpa>=2.0?'#f59e0b':'#ef4444';
   gpaEl.style.color=color; letEl.style.color=color;
   prog.style.width=(gpa/4*100)+'%'; prog.style.background=color;
   subEl.textContent=totalCredits+' credit'+(totalCredits!==1?'s':'')+' · '+courses.length+' course'+(courses.length!==1?'s':'');
@@ -200,39 +200,39 @@ addRow('Course 4','',3);
     
 
 <!-- embed-widget -->
-<div style="max-width:640px;margin:0 auto 32px;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:18px">
-  <h2 style="font-size:15px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">Embed This Tool</h2>
+<div style="max-width:640px;margin:0 auto 32px;background:#1e293b;border:1px solid #334155;border-radius:12px;padding:18px">
+  <h2 style="font-size:15px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">Embed This Tool</h2>
   <p style="font-size:13px;color:#64748b;margin-bottom:12px">Add this GPA Calculator to your website or blog for free — just paste this code:</p>
-  <div style="background:#f8f7f4;border:1px solid #e2e8f0;border-radius:8px;padding:12px;font-family:'Inter',monospace;font-size:12px;color:#7dd3fc;word-break:break-all;margin-bottom:10px" id="embed-code">&lt;iframe src=&quot;https://gpa-calculator.tabutility.com/&quot; width=&quot;100%&quot; height=&quot;600&quot; frameborder=&quot;0&quot; style=&quot;border-radius:12px&quot; title=&quot;GPA Calculator by Tabutility&quot;&gt;&lt;/iframe&gt;
+  <div style="background:#0f172a;border:1px solid #334155;border-radius:8px;padding:12px;font-family:monospace;font-size:12px;color:#818cf8;word-break:break-all;margin-bottom:10px" id="embed-code">&lt;iframe src=&quot;https://gpa-calculator.tabutility.com/&quot; width=&quot;100%&quot; height=&quot;600&quot; frameborder=&quot;0&quot; style=&quot;border-radius:12px&quot; title=&quot;GPA Calculator by Tabutility&quot;&gt;&lt;/iframe&gt;
 &lt;p style=&quot;font-size:12px&quot;&gt;&lt;a href=&quot;https://gpa-calculator.tabutility.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GPA Calculator&lt;/a&gt; by &lt;a href=&quot;https://tabutility.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tabutility&lt;/a&gt;&lt;/p&gt;</div>
-  <button onclick="navigator.clipboard.writeText(document.getElementById('embed-code').textContent).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Embed Code',2000)})" style="background:#0f172a;color:#f8f7f4;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer">Copy Embed Code</button>
+  <button onclick="navigator.clipboard.writeText(document.getElementById('embed-code').textContent).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Embed Code',2000)})" style="background:#4f46e5;color:#0f172a;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer">Copy Embed Code</button>
   <span style="font-size:11px;color:#475569;margin-left:12px">Free to use — the credit link helps others find the tool</span>
 </div>
-<div style="margin:0 auto 24px;max-width:640px;background:#ffffff;border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;border:1px solid #e2e8f0" onclick="window.open('https://www.amazon.co.uk/s?k=study%20skills%20academic%20success%20books&tag=tabutility-20','_blank','noopener noreferrer')" title="Improve your study habits?">
+<div style="margin:0 auto 24px;max-width:640px;background:#1e293b;border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;border:1px solid #334155" onclick="window.open('https://www.amazon.co.uk/s?k=study%20skills%20academic%20success%20books&tag=tabutility-20','_blank','noopener noreferrer')" title="Improve your study habits?">
   <span style="font-size:28px;flex-shrink:0">📚</span>
   <div style="min-width:0">
-    <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:3px">Improve your study habits?</div>
-    <div style="font-size:12px;color:#64748b">Browse study skills books <span style="color:#f59e0b;white-space:nowrap">→ Browse on Amazon</span></div>
+    <div style="font-size:13px;font-weight:700;color:#f1f5f9;margin-bottom:3px">Improve your study habits?</div>
+    <div style="font-size:12px;color:#94a3b8">Browse study skills books <span style="color:#f59e0b;white-space:nowrap">→ Browse on Amazon</span></div>
     <div style="font-size:10px;color:#475569;margin-top:3px">As an Amazon Associate we earn from qualifying purchases.</div>
   </div>
 </div>
-<h2 style="font-size:15px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px">Related Tools</h2>
+<h2 style="font-size:15px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px">Related Tools</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
-    <a href="https://percentage-calculator.tabutility.com/" style="display:block;background:rgba(255,255,255,0.07);border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;text-decoration:none;color:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
-      <div style="font-size:13px;font-weight:600;color:#0f172a">Percentage Calculator</div>
-      <div style="font-size:11px;color:#64748b;margin-top:2px">Calculators</div>
+    <a href="https://percentage-calculator.tabutility.com/" style="display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 16px;text-decoration:none;color:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+      <div style="font-size:13px;font-weight:600;color:#f1f5f9">Percentage Calculator</div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:2px">Calculators</div>
     </a>
-    <a href="https://bmi-calculator.tabutility.com/" style="display:block;background:rgba(255,255,255,0.07);border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;text-decoration:none;color:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
-      <div style="font-size:13px;font-weight:600;color:#0f172a">BMI Calculator</div>
-      <div style="font-size:11px;color:#64748b;margin-top:2px">Calculators</div>
+    <a href="https://bmi-calculator.tabutility.com/" style="display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 16px;text-decoration:none;color:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+      <div style="font-size:13px;font-weight:600;color:#f1f5f9">BMI Calculator</div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:2px">Calculators</div>
     </a>
-    <a href="https://age-calculator.tabutility.com/" style="display:block;background:rgba(255,255,255,0.07);border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;text-decoration:none;color:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
-      <div style="font-size:13px;font-weight:600;color:#0f172a">Age Calculator</div>
-      <div style="font-size:11px;color:#64748b;margin-top:2px">Calculators</div>
+    <a href="https://age-calculator.tabutility.com/" style="display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 16px;text-decoration:none;color:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+      <div style="font-size:13px;font-weight:600;color:#f1f5f9">Age Calculator</div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:2px">Calculators</div>
     </a>
-    <a href="https://tip-calculator.tabutility.com/" style="display:block;background:rgba(255,255,255,0.07);border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;text-decoration:none;color:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
-      <div style="font-size:13px;font-weight:600;color:#0f172a">Tip & Bill Splitter</div>
-      <div style="font-size:11px;color:#64748b;margin-top:2px">Calculators</div>
+    <a href="https://tip-calculator.tabutility.com/" style="display:block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 16px;text-decoration:none;color:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+      <div style="font-size:13px;font-weight:600;color:#f1f5f9">Tip & Bill Splitter</div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:2px">Calculators</div>
     </a>
     </div>
   </div>
@@ -240,22 +240,22 @@ addRow('Course 4','',3);
 
 <div style="max-width:860px;margin-left:auto;margin-right:auto;margin-top:8px;margin-bottom:24px;padding:0 16px">
   <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px 24px">
-    <h2 style="font-size:15px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Frequently Asked Questions</h2>
+    <h2 style="font-size:15px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Frequently Asked Questions</h2>
     <div style="border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 0">
-      <div style="font-size:14px;font-weight:600;color:#0f172a;margin-bottom:6px">Is the GPA Calculator free?</div>
-      <div style="font-size:13px;color:#64748b;line-height:1.5">Yes — completely free, no sign-up or download needed. Just enter your numbers and get instant results.</div>
+      <div style="font-size:14px;font-weight:600;color:#f1f5f9;margin-bottom:6px">Is the GPA Calculator free?</div>
+      <div style="font-size:13px;color:#94a3b8;line-height:1.5">Yes — completely free, no sign-up or download needed. Just enter your numbers and get instant results.</div>
     </div>
     <div style="border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 0">
-      <div style="font-size:14px;font-weight:600;color:#0f172a;margin-bottom:6px">How accurate is the GPA Calculator?</div>
-      <div style="font-size:13px;color:#64748b;line-height:1.5">Results are based on standard financial formulas and are accurate for planning purposes. For personalised financial advice, consult a qualified professional.</div>
+      <div style="font-size:14px;font-weight:600;color:#f1f5f9;margin-bottom:6px">How accurate is the GPA Calculator?</div>
+      <div style="font-size:13px;color:#94a3b8;line-height:1.5">Results are based on standard financial formulas and are accurate for planning purposes. For personalised financial advice, consult a qualified professional.</div>
     </div>
     <div style="border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 0">
-      <div style="font-size:14px;font-weight:600;color:#0f172a;margin-bottom:6px">Can I use the GPA Calculator on my phone?</div>
-      <div style="font-size:13px;color:#64748b;line-height:1.5">Yes — it works on any device including desktop, tablet and mobile.</div>
+      <div style="font-size:14px;font-weight:600;color:#f1f5f9;margin-bottom:6px">Can I use the GPA Calculator on my phone?</div>
+      <div style="font-size:13px;color:#94a3b8;line-height:1.5">Yes — it works on any device including desktop, tablet and mobile.</div>
     </div>
     <div style="border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 0">
-      <div style="font-size:14px;font-weight:600;color:#0f172a;margin-bottom:6px">Do I need to create an account?</div>
-      <div style="font-size:13px;color:#64748b;line-height:1.5">No account needed. The GPA Calculator works instantly in your browser.</div>
+      <div style="font-size:14px;font-weight:600;color:#f1f5f9;margin-bottom:6px">Do I need to create an account?</div>
+      <div style="font-size:13px;color:#94a3b8;line-height:1.5">No account needed. The GPA Calculator works instantly in your browser.</div>
     </div>
   </div>
 </div>
@@ -280,11 +280,11 @@ addRow('Course 4','',3);
   }
 })();
 </script>
-<footer style="border-top:1px solid #e2e8f0;background:#ffffff;margin-top:48px;padding:28px 24px;text-align:center;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;color:#64748b;line-height:1.8">
-<div style="font-weight:700;color:#0f172a;font-size:15px">⚡ Tabutility</div>
+<footer style="background:#1a1a2e;margin-top:48px;padding:28px 24px;text-align:center;font-family:'Segoe UI',system-ui,Arial,sans-serif;font-size:13px;color:#94a3b8;line-height:1.8">
+<div style="font-weight:700;color:#fff;font-size:15px">⚡ Tabutility</div>
 <div>Free, private, browser-based tools. No sign-up, no tracking.</div>
-<div><a href="https://tabutility.com" style="color:#0f172a;font-weight:600;text-decoration:none">All Tools</a> · <a href="https://tabutility.com/blog/" style="color:#64748b;text-decoration:none">Blog</a> · <a href="https://tabutility.com/#about" style="color:#64748b;text-decoration:none">About</a></div>
-<div style="margin-top:6px;color:#94a3b8">© 2026 Tabutility</div>
+<div><a href="https://tabutility.com" style="color:#818cf8;font-weight:600;text-decoration:none">All Tools</a> · <a href="https://tabutility.com/blog/" style="color:#94a3b8;text-decoration:none">Blog</a> · <a href="https://tabutility.com/#about" style="color:#94a3b8;text-decoration:none">About</a></div>
+<div style="margin-top:6px;color:#64748b">© 2026 Tabutility</div>
 </footer>
 </body>
 </html>
